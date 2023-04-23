@@ -1,8 +1,17 @@
-# fron69-practice
+# Заняття 2. План
 
-# Tasks
+- Kahoot
+- Питання-відповідь
+- Практичне заняття
 
-|    `Lesson`     |                               `Practice Code`                               |
-| :-------------: | :-------------------------------------------------------------------------: |
-| **Lesson - 01** | [Link](https://github.com/pavlo-sheremet-dev/fson69-blended/tree/lesson-01) |
-| **Lesson - 02** | [Link](https://github.com/pavlo-sheremet-dev/fson69-blended/tree/lesson-02) |
+> Перед початком практики ознайомитись з бібліотекою
+> [react-tabs](https://www.npmjs.com/package/react-tabs), яка використовується в
+> **Basic Example** в Арр для розділення двох завдань. Також потрібно буде
+> отримати ключ з ресурсу [pexels](https://www.pexels.com/api/) - для роботи з
+> вправою Пошук зображень. В обох завданнях будемо перевикористовувати
+> компоненти `<SearchFormStyled/>` та styled-components `Grid` та `GridItem`
+
+## Завдання
+
+- [Завдання 1 - Пошук зображень](./task%231.md)
+- [Завдання 2 - TODO LIST](./task%232.md)

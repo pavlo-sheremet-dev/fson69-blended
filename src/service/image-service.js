@@ -15,7 +15,7 @@ export const getImages = (query, page) => {
       id,
       avg_color,
       alt,
-      src,
+      src: src.medium,
     }));
     return { total_results, images };
   });

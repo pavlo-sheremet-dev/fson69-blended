@@ -43,9 +43,9 @@ export class Gallery extends Component {
     }));
   };
 
-  getQuery = query => {
-    if (query === this.state.query) return;
-    this.setState({ query: query, page: 1, images: [], total_results: 0 });
+  getQuery = ({ value }) => {
+    if (value === this.state.query) return;
+    this.setState({ query: value, page: 1, images: [], total_results: 0 });
   };
 
   render() {

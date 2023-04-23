@@ -5,23 +5,23 @@ import { FormBtn, InputSearch, SearchFormStyled } from './SearchForm.styled';
 
 export class SearchForm extends Component {
   state = {
-    searchValue: '',
+    value: '',
   };
 
   handleChange = e => {
-    this.setState({ searchValue: e.target.value });
+    this.setState({ value: e.target.value });
   };
 
   onSubmit = event => {
     event.preventDefault();
-    const { searchValue } = this.state;
-    const query = searchValue.trim().toLowerCase();
-    if (!query) return this.setState({ searchValue: '' });
-    this.props.handleSubmit(query);
+    const { value } = this.state;
+    const inputValue = value.trim().toLowerCase();
+    if (!inputValue) return this.setState({ value: '' });
+    this.props.handleSubmit({ value: inputValue });
   };
 
   render() {
-    const { searchValue } = this.state;
+    const { value } = this.state;
     return (
       <SearchFormStyled onSubmit={this.onSubmit}>
         <FormBtn type="submit">
@@ -32,7 +32,7 @@ export class SearchForm extends Component {
           name="search"
           required
           autoFocus
-          value={searchValue}
+          value={value}
           onChange={this.handleChange}
         />
       </SearchFormStyled>

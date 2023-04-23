@@ -12,4 +12,5 @@ export const GridItem = styled.li`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 150px;
 `;

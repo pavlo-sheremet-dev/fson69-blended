@@ -1,8 +1,6 @@
 import { Component } from 'react';
 import { getImages } from 'service/image-service';
-
-import * as ImageService from 'service/image-service';
-import { Button, SearchForm, Grid, GridItem, Text, CardItem } from 'components';
+import { Button, SearchForm, Grid, Text, GalleryItem } from 'components';
 
 export class Gallery extends Component {
   state = {
@@ -17,12 +15,13 @@ export class Gallery extends Component {
   componentDidUpdate(_, prevState) {
     const { query, page } = this.state;
     if (query !== prevState.query || page !== prevState.page) {
-      this.setState({ loading: true });
+      this.setState({ loading: true, error: '' });
       getImages(query, page)
         .then(({ total_results, images }) => {
           if (!total_results) return;
           this.setState(prevState => ({
             total_results,
+            // error: '',
             images: [...prevState.images, ...images],
           }));
         })
@@ -33,6 +32,9 @@ export class Gallery extends Component {
           this.setState({ loading: false });
         });
     }
+
+    if (page !== prevState.page && page !== 1) {
+    }
   }
 
   onNextButton = () => {
@@ -42,11 +44,12 @@ export class Gallery extends Component {
   };
 
   getQuery = query => {
-    this.setState({ query: query, page: 1, images: [] });
+    if (query === this.state.query) return;
+    this.setState({ query: query, page: 1, images: [], total_results: 0 });
   };
 
   render() {
-    const { images, loading, total_results } = this.state;
+    const { images, loading, total_results, error } = this.state;
     const isButtonVisible = !loading && images.length < total_results;
     return (
       <>
@@ -54,12 +57,8 @@ export class Gallery extends Component {
 
         {images.length ? (
           <Grid>
-            {images.map(({ id, alt, src, avg_color }) => (
-              <GridItem key={id}>
-                <CardItem color={avg_color}>
-                  <img src={src} alt={alt} />
-                </CardItem>
-              </GridItem>
+            {images.map(({ id, ...image }) => (
+              <GalleryItem key={id} {...image} />
             ))}
           </Grid>
         ) : (
@@ -70,6 +69,7 @@ export class Gallery extends Component {
             Load more
           </Button>
         )}
+        {error && <p>{error}</p>}
       </>
     );
   }

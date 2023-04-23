@@ -11,11 +11,12 @@ axios.defaults.params = {
 export const getImages = (query, page) => {
   return axios.get('/search', { params: { query, page } }).then(response => {
     const { total_results, photos } = response.data;
-    const images = photos.map(({ id, avg_color, alt, src }) => ({
+    const images = photos.map(({ id, avg_color, alt, src }, idx) => ({
       id,
       avg_color,
       alt,
       src: src.medium,
+      isAnchor: !idx,
     }));
     return { total_results, images };
   });

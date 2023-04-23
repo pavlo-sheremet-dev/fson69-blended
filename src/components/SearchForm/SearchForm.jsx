@@ -16,7 +16,7 @@ export class SearchForm extends Component {
     event.preventDefault();
     const { searchValue } = this.state;
     const query = searchValue.trim().toLowerCase();
-    if (!query) return;
+    if (!query) return this.setState({ searchValue: '' });
     this.props.handleSubmit(query);
   };
 

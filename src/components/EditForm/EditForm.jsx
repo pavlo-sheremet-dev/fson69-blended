@@ -4,7 +4,8 @@ import { MdOutlineCancel } from 'react-icons/md';
 import { SearchFormStyled, FormBtn, InputSearch } from 'components';
 import { BtnEdit } from './EditForm.styled';
 import { useDispatch } from 'react-redux';
-import { toggleSelectedTodo, editTodo } from 'redux/todoSlice';
+import { toggleSelectedTodo } from 'redux/todoSlice';
+import { editTodo } from 'redux/operations';
 import { useTodosState } from 'redux/selectors';
 
 export const EditForm = () => {

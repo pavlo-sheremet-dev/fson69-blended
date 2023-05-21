@@ -2,7 +2,8 @@ import { Text } from 'components';
 import { TodoWrapper, DeleteButton, EditButton } from './Todo.styled';
 import { RiDeleteBinLine, RiEdit2Line } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
-import { deleteTodo, toggleSelectedTodo } from 'redux/todoSlice';
+import { toggleSelectedTodo } from 'redux/todoSlice';
+import { deleteTodo } from 'redux/operations';
 
 export const Todo = ({ idx, description, id }) => {
   const dispatch = useDispatch();

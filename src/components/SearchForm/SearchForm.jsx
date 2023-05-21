@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { FormBtn, InputSearch, SearchFormStyled } from './SearchForm.styled';
 import { useDispatch } from 'react-redux';
-import { addTodo } from 'redux/todoSlice';
+import { addTodo } from 'redux/operations';
 import { nanoid } from 'nanoid';
 
 export const SearchForm = () => {

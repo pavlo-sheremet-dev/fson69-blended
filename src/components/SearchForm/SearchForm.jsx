@@ -2,9 +2,13 @@ import { useState } from 'react';
 
 import { FiSearch } from 'react-icons/fi';
 import { FormBtn, InputSearch, SearchFormStyled } from './SearchForm.styled';
+import { useDispatch } from 'react-redux';
+import { addTodo } from 'redux/todoSlice';
+import { nanoid } from 'nanoid';
 
-export const SearchForm = ({ onSubmit }) => {
+export const SearchForm = () => {
   const [value, setValue] = useState('');
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     setValue(e.target.value);
@@ -12,7 +16,7 @@ export const SearchForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ value });
+    dispatch(addTodo({ value, id: nanoid() }));
     setValue('');
   };
 
